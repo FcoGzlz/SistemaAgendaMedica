@@ -18,7 +18,7 @@
                     <div class="form-group" style="margin: 0px;"><button class="btn btn-outline-primary botonlgvolver" type="submit" style="width: 100%;font-family: Lato, sans-serif;">Volver</button></div>
                 </div>
                 <div class="col-xl-6" style="padding: 0px;padding-top: 0px;padding-left: 5px;padding-right: 5px;max-width: 50%;">
-                    <div class="form-group" style="margin: 0px;"><button class="btn btn-outline-primary botonlgaceptar" type="submit" style="width: 100%;font-family: Lato, sans-serif;">Aceptar</button></div>
+                    <div class="form-group" style="margin: 0px;"><button class="btn btn-outline-primary botonlgaceptar" type="submit" onclick="window.location='{{ url("idexuserlog") }}'" style="width: 100%;font-family: Lato, sans-serif;">Aceptar</button></div>
                 </div>
             </div><a class="forgot" href="#" style="margin-top: 10px;">Forgot your email or password?</a></form>
     </div>

@@ -32,7 +32,7 @@
                                 <li class="nav-item" role="presentation"><a class="nav-link" href="faq.html">Mis reservas</a></li>
                                 <li class="nav-item" role="presentation"><a class="nav-link text-center" href="faq.html" style="width: 101px;">Administrar cupos</a></li>
                                 <li class="nav-item" role="presentation"><a class="nav-link text-center" href="faq.html" style="width: 123px;">Administrar citas</a></li>
-                                <li class="nav-item" role="presentation"><a class="nav-link text-center" href="faq.html" style="width: 192px;">Ambiente administrativo Doctores</a></li>
+                                <li class="nav-item" role="presentation"><a class="nav-link text-center" href="{{ URL::route('login')}}" style="width: 192px;">Ambiente administrativo Doctores</a></li>
                                 <li class="nav-item" role="presentation"><a class="nav-link text-center" href="faq.html" style="width: 223px;">Ambiente administrativo Citas y Cupos</a></li>
                         </ul>
                     </div>
