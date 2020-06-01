@@ -63,6 +63,11 @@ class RolesAndPermissionsSeeder extends Seeder
         $rolePaciente->givePermissionTo('eliminar_cita');
         $rolePaciente->givePermissionTo('listar_cita');
 
+        //Doctor
+        $roleDoctor = Role::create(['name' => 'doctor']);
+        $roleDoctor->givePermissionTo('eliminar_cupo');
+        $roleDoctor->givePermissionTo('actualizar_cupo');
+
         //Super Administrador
         $superAdmin = Role::create(['name' => 'superAdmin']);
         $superAdmin->givePermissionTo(Permission::all());

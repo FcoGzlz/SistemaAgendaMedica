@@ -4,20 +4,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Prototipo Proyecto Consultorio Estable 11-05-2020</title>
+    <title>Sistema Agenda Médica</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightpick@1.3.4/css/lightpick.min.css">
     <link rel="stylesheet" href="assets/css/styles.min.css">
 </head>
 
 <body>
     <!-- Start: navbar -->
     <div class="row" style="margin: 0px;">
-
+        @yield("menu")
         <div class="col float-sm-right">
             <!-- Start: sticky dark top nav with dropdown -->
             <nav class="navbar navbar-light navbar-expand-md fixed-top shadow navbar-fixed-top navigation-clean-button" style="background-color: #ffffff;">
@@ -32,16 +31,25 @@
                             <li class="nav-item" role="presentation"><a class="nav-link" href="administrarCupos.html">Administrar cupos</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="administrarCitas.html">Administrar citas</a></li>
                             @endrole
+
                             @role('administradorUsuarios')
                             <li class="nav-item" role="presentation"><a class="nav-link" href="ambienteAdAdminDoctores.html">Ambiente Administrativo Usuarios</a></li>
                             @endrole
-                            <li class="nav-item dropdown">
+                            <li class="nav-item" role="presentation"></li>
+                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Nombre de usuario</a>
+                                    <div class="dropdown-menu" role="menu">
+                                    <a class="dropdown-item" role="presentation" href="#">Mis Datos</a>
+                                    <a class="dropdown-item" role="presentation" href="#">Cerrar sesión</a></div>
+                                </li>
+                            
+                                <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <!-- {{ Auth::user()->nombres }} {{Auth::user()->apellidoPaterno}} <span class="caret"></span> -->
+                                    {{ Auth::user()->nombres }} {{Auth::user()->apellidoPaterno}} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar Sesión') }}
                                     </a>
@@ -63,6 +71,8 @@
     <div class="row align-items-center" style="margin: 0px;margin-top: 133px;">
         <div class="col" style="padding: 0px;"><img src="assets/img/degradado%20arriba.png" style="width: 100%;height: 14px;margin-top: -11px;"></div>
     </div>
+
+
     <!-- End: Separador verde imagen -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
@@ -74,7 +84,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
     <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
     <script src="assets/js/script.min.js"></script>
+    @yield("content")
 </body>
 
 </html>
-@yield('content')

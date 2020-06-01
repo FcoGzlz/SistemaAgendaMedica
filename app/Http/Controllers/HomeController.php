@@ -34,15 +34,13 @@ class HomeController extends Controller
                 break;
 
             case 'administradorCyC':
-                # code...
                 break;
             case 'administradorUsuarios':
-                # code...
+                return redirect()->route('AdminUsers');
                 break;
             case 'paciente':
-                # code...
+                return redirect()->route('indexPaciente');
                 break;
         }
-        return view('home');
     }
 }

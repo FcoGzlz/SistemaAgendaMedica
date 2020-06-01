@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrearTablaPrevisiones extends Migration
+class CreateCupoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class CrearTablaPrevisiones extends Migration
      */
     public function up()
     {
-        Schema::create('previsiones', function (Blueprint $table) {
+        Schema::create('cupo', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre');
+            $table->date('fecha');
+            $table->time('hora');
+            $table->bigInteger('id_especialidad')->unsigned();//Campo que relacina a Cupo con Especialidad.
             $table->timestamps();
+
+            
+           
         });
     }
 
@@ -27,6 +32,6 @@ class CrearTablaPrevisiones extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('previsiones');
+        Schema::dropIfExists('cupo');
     }
 }

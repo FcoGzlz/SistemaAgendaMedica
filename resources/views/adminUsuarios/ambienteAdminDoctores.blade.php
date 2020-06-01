@@ -17,7 +17,7 @@
     <div id="wrapper">
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand"> <a>Gestor de usuarios</a></li>
+                <li class="sidebar-brand"> <a>{{ Auth::user()->apellidoPaterno }}</a></li>
                 <li> <a href="#">Administrar Ad. Doctores</a></li>
                 <li> <a href="#">Administrar Ad. Cupos y Citas</a></li>
             </ul>

@@ -11,12 +11,29 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('auth/login');
+// });
+// Route::get('/', function () {
+//     return view('index');
+// });
+Route::get('/', 'PacienteController@inicio');
+
+
 
 Auth::routes();
 
+Route::match(['get', 'post'], '/validar', 'PacienteController@validar')->name('validar');
+Route::get('indexPaciente', 'PacienteController@index')->name('indexPaciente');
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/administradorUsuarios', 'UsuariosController@index')->name('AdminUsers');
+
+Route::post('/crearUsuario', 'UsuariosController@create')->name('addAdminCyC');
+Route::post('/registro', 'PacienteController@register')->name('registro');
+
+Route::get('/agendarCita', 'PacienteController@agendarCita')->name('agendarCita');
+// Route::post('/validar', 'PacienteController@validar')->name('validar');
+
 
 

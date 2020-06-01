@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrearTablaCitas extends Migration
+class CreateCitaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CrearTablaCitas extends Migration
      */
     public function up()
     {
-        Schema::create('citas', function (Blueprint $table) {
+        Schema::create('cita', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('numeroCita');
-            $table->string('tipoCita');
-            $table->integer('especialidad_id')->unique();
-            $table->string('paciente_rut')->unique();
+            $table->bigInteger('id_paciente')->unsigned();//Campo que relaciona a Cita con Usuario
+            $table->bigInteger('id_cupo')->unsigned();//Campo que relaciona a Cita con Cupo
+            $table->bigInteger('id_estado')->unsigned();//Campo que relaciona a Cita con Estado
             $table->timestamps();
+
+           
         });
     }
 
@@ -30,6 +31,6 @@ class CrearTablaCitas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('citas');
+        Schema::dropIfExists('cita');
     }
 }

@@ -46,17 +46,19 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+     //Función que valida los campos
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'nombres' => ['required', 'string', 'max:255'],
             'rut' => ['required', 'string', 'max:255'],
             'apellidoPaterno' => ['required', 'string', 'max:255'],
-            'apellidoPaterno' => ['required', 'string', 'max:255'],
             'apellidoMaterno' => ['required', 'string', 'max:255'],
+            'genero' => ['required', 'string', 'max:255'],
             'telefono' => ['required', 'string', 'max:255'],
-            'correo' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
         ]);
     }
 
@@ -66,16 +68,21 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+    //Función que agrega datos a la BD
     protected function create(array $data)
     {
-        return User::create([
+        $usuario = User::create([
             'nombres' => $data['nombres'],
             'rut' => $data['rut'],
             'apellidoPaterno' => $data['apellidoPaterno'],
             'apellidoMaterno' => $data['apellidoMaterno'],
+            'genero' => $data['genero'],
             'telefono' => $data['telefono'],
-            'correo' => $data['correo'],
+            'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $usuario->assignRole('paciente');//Asignación del rol 'paciente' al usuario que se registra.
+        return $usuario;
     }
 }
