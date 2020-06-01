@@ -26,7 +26,6 @@
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav text-nowrap align-items-end justify-content-md-end align-items-md-center">
                             <li class="nav-item" role="presentation"><a class="nav-link active d-inline-flex" href="index.html" style="background-color: #27ae60;color: rgba(255,255,255,0.9);border-radius: 8px;width: 68px;min-width: 0px;padding-left: 16px;padding-right: 16px;">Inicio</a></li>
-<<<<<<< HEAD
                             <li class="nav-item" role="presentation"><a class="nav-link" href="buscarCita.html">Reserva tu hora</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="citasPendientes.html">Mis reservas</a></li>
                             @role('administradorCyC')
@@ -52,15 +51,7 @@
                                     </form>
                                 </div>
                             </li>
-=======
-                            <li
-                                class="nav-item" role="presentation"><a class="nav-link" href="about.html" style="margin-left: 10px;">Reserva tu hora</a></li>
-                                <li class="nav-item" role="presentation"><a class="nav-link" href="faq.html">Mis reservas</a></li>
-                                <li class="nav-item" role="presentation"><a class="nav-link text-center" href="faq.html" style="width: 101px;">Administrar cupos</a></li>
-                                <li class="nav-item" role="presentation"><a class="nav-link text-center" href="faq.html" style="width: 123px;">Administrar citas</a></li>
-                                <li class="nav-item" role="presentation"><a class="nav-link text-center" href="{{ URL::route('login')}}" style="width: 192px;">Ambiente administrativo Doctores</a></li>
-                                <li class="nav-item" role="presentation"><a class="nav-link text-center" href="faq.html" style="width: 223px;">Ambiente administrativo Citas y Cupos</a></li>
->>>>>>> 7bcf1efbcf5175ebca08a9cb5ff1fa79b4878311
+                            
                         </ul>
                     </div>
                 </div>

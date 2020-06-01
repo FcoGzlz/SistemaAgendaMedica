@@ -171,6 +171,7 @@
 </div>
 
 <script type="text/javascript">
+//Función que agrega datos del usuario a través de Ajax
     $('#agregar').click(function() {
         $.ajax({
             type: 'POST',
@@ -187,6 +188,7 @@
             },
 
         })
+        //Luego de que los datos hayan sido enviados, se limpian los campos
         $('#rut').val(''),
         $('#nombres').val(''),
         $('#apellidoPaterno').val(''),
