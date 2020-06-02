@@ -25,7 +25,7 @@
             <h2 class="sr-only">Login Form</h2>
             <!-- End: Titulo del login -->
             <div class="illustration">
-                <p style="margin: 0px;font-size: 23px;font-family: Lato, sans-serif;color: #27d960;">Tu Rut no ha sido detectado, regístrate</p>
+                <p style="margin: 0px;font-size: 23px;font-family: Lato, sans-serif;color: #27d960;">Su Rut no ha sido detectado, por favor, regístrese</p>
             </div>
             <div class="form-group">
                 <div class="form-row">

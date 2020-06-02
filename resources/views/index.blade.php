@@ -25,7 +25,7 @@
             <h2 class="sr-only">Login Form</h2>
             <!-- End: Titulo del login -->
             <div class="illustration">
-                <p style="margin: 0px;font-size: 23px;font-family: Lato, sans-serif;color: #27d960;">¿Para quien es la hora?</p>
+                <p style="margin: 0px;font-size: 23px;font-family: Lato, sans-serif;color: #27d960;">Ingrese su Rut</p>
             </div>
             <div class="form-group"><input class="form-control input-login" type="text" placeholder="Rut" name="rut" style="font-family: Lato, sans-serif;"></div>
             <div class="form-row align-items-center">
@@ -35,7 +35,7 @@
                 <div class="col-xl-6" style="padding: 0px;padding-top: 0px;padding-left: 5px;padding-right: 5px;max-width: 50%;">
                     <div class="form-group" style="margin: 0px;"><button class="btn btn-outline-primary botonlgaceptar" type="submit" role="button" style="width: 100%;font-family: Lato, sans-serif;">Aceptar</button></div>
                 </div>
-            </div><a class="forgot" href="#" style="margin-top: 10px;">Forgot your email or password?</a>
+            </div>
         </form>
     </div>
     <!-- End: Login Form Clean -->
