@@ -36,12 +36,15 @@ class PacienteController extends Controller
            $usuario = Auth::user();//Se recupera el usuario que ha iniciado sesión, de esta manera se puede acceder a los atributos del mismo.
            $idUser= $usuario->id;//Se obtiene la id del usuario que ha iniciado se sesión, la 'id' será usada para filtrar las citas que se traen desde la Base de Datos.
            //Join de tablas, aquí se traen los datos relacionados de las tablas: cita, users, cupo y especialidad.
-           $citas = DB::table('cita')
-           ->join('users', 'users.id', '=', 'cita.id_paciente')
-           ->join('cupo', 'cupo.id','=', 'cita.id_cupo')
-           ->join('especialidad', 'especialidad.id', '=', 'cupo.id_especialidad')->where('users.id', '=', "$idUser")//Añadiendo 'where', sólo se traerán los datos que concuerden con la id del usuario que ha iniciado sesión.
-           ->select('users.nombres', 'users.id as id', 'cupo.hora as hora', 'cupo.fecha as fecha', 'especialidad.nombre as especialidad')//Se seleccionan los datos que se traen de cada tabla.
-           ->orderBy('cupo.fecha')//Se ordena la lista, para que las citas se muestren ordenadas según la fecha de atención.
+           $citas = DB::table('paciente_cita')
+           ->join('users', 'users.id', '=', 'paciente_cita.id_paciente')
+           ->join('cita', 'cita.id','=', 'paciente_cita.id_cita')
+           ->join('doctor_cita', 'doctor_cita.id_doctor', '=', 'cita.id')
+           ->join('doctor_especialidad', 'doctor_especialidad.id_doctor', '=', 'doctor_cita.id_doctor')
+           ->join('especialidad', 'especialidad.id', '=', 'doctor_especialidad.id_especialidad')
+           ->where('users.id', '=', "$idUser")//Añadiendo 'where', sólo se traerán los datos que concuerden con la id del usuario que ha iniciado sesión.
+           ->select('users.nombres', 'cita.hora as hora', 'cita.fecha as fecha', 'especialidad.nombre as especialidad')//Se seleccionan los datos que se traen de cada tabla.
+           ->orderBy('cita.fecha')//Se ordena la lista, para que las citas se muestren ordenadas según la fecha de atención.
            ->get();
            
            return view('paciente.index2Paciente', compact("usuario", "citas"));//Se devuelve la vista junto con la variable 'citas' la cual contiene las citas que han sido agendadas por el paciente.
