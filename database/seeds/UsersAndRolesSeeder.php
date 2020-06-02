@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
-
+use Illuminate\Support\Facades\Hash;
 
 class UsersAndRolesSeeder extends Seeder
 {
@@ -22,7 +22,7 @@ class UsersAndRolesSeeder extends Seeder
             'genero' => 'Masculino',
             'telefono' => '963280930',
             'email' => 'franciscogzlz533@gmail.com',
-            'password' => bcrypt('root'),
+            'password' => Hash::make('root'),
         ]);
         $superAdminGP = User::create([
             'nombres' => 'Gabriel Arnoldo',
@@ -32,7 +32,7 @@ class UsersAndRolesSeeder extends Seeder
             'genero' => 'Masculino',
             'telefono' => '989788406',
             'email' => 'gabriel.pelle25@gmail.com',
-            'password' => bcrypt('root'),
+            'password' => Hash::make('root'),
         ]);
         $superAdminFR = User::create([
             'nombres' => 'Felipe Hernán',
@@ -42,18 +42,18 @@ class UsersAndRolesSeeder extends Seeder
             'genero' => 'Masculino',
             'telefono' => '984269693 ',
             'email' => 'felipe.rodriguez74@inacapmail.com',
-            'password' => bcrypt('root'),
+            'password' =>  Hash::make('root'),
         ]);
 
         $adminCyC = User::create([
-            'nombres' => 'Admin',
+            'nombres' => 'María Ester',
             'rut' => 'adminCyC',
-            'apellidoPaterno' => 'CyC',
-            'apellidoMaterno' => 'C',
-            'genero' => 'Masculino',
-            'telefono' => '984269693 ',
-            'email' => 'admmin@CyC.com',
-            'password' => bcrypt('root'),
+            'apellidoPaterno' => 'Quijada',
+            'apellidoMaterno' => 'Sanhueza',
+            'genero' => 'Femenino',
+            'telefono' => '900520679 ',
+            'email' => 'maria@gmail.com',
+            'password' => Hash::make('MariaRoot'),
         ]);
 
         $adminUsuarios = User::create([
@@ -62,31 +62,31 @@ class UsersAndRolesSeeder extends Seeder
             'apellidoPaterno' => 'Usuarios',
             'apellidoMaterno' => 'C',
             'genero' => 'Masculino',
-            'telefono' => '984269693 ',
+            'telefono' => '963014876 ',
             'email' => 'admmin@usuarios.com',
-            'password' => bcrypt('root'),
+            'password' => Hash::make('AdminURoot'),
         ]);
 
         $paciente = User::create([
-            'nombres' => 'Paciente',
+            'nombres' => 'Pedro Esteban',
             'rut' => 'paciente',
-            'apellidoPaterno' => 'Común',
-            'apellidoMaterno' => 'C',
+            'apellidoPaterno' => 'Flores',
+            'apellidoMaterno' => 'Verdugo',
             'genero' => 'Masculino',
-            'telefono' => '984269693 ',
-            'email' => 'paciente@comun.com',
-            'password' => bcrypt('root'),
+            'telefono' => '938742009',
+            'email' => 'pedro.esteban@gmail.com',
+            'password' => Hash::make('PedroRoot'),
         ]);
 
         $doctor = User::create([
-            'nombres' => 'Doctor',
+            'nombres' => 'Alfonso Andrés',
             'rut' => 'doctor',
-            'apellidoPaterno' => 'Común',
-            'apellidoMaterno' => 'C',
+            'apellidoPaterno' => 'Pérez',
+            'apellidoMaterno' => 'García',
             'genero' => 'Masculino',
-            'telefono' => '984269693 ',
-            'email' => 'doctor@comun.com',
-            'password' => bcrypt('root'),
+            'telefono' => '932547820 ',
+            'email' => 'alandres@gmail.com',
+            'password' => Hash::make('AlfonsoRoot'),
         ]);
         
         $doctor -> assignRole('doctor');

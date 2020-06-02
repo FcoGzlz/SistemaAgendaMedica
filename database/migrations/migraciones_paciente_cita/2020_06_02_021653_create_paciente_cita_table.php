@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCupoTable extends Migration
+class CreatePacienteCitaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateCupoTable extends Migration
      */
     public function up()
     {
-        Schema::create('cupo', function (Blueprint $table) {
+        Schema::create('paciente_cita', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('fecha');
-            $table->time('hora');
-            $table->bigInteger('id_especialidad')->unsigned();//Campo que relacina a Cupo con Especialidad.
+            $table->bigInteger('id_paciente')->unsigned();
+            $table->bigInteger('id_cita')->unsigned();
             $table->timestamps();
-
-            
-           
         });
     }
 
@@ -32,6 +28,6 @@ class CreateCupoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cupo');
+        Schema::dropIfExists('paciente_cita');
     }
 }

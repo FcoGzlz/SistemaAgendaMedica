@@ -15,7 +15,7 @@
 
 <body class="background-login">
     <!-- Start: Boton Volver -->
-    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 offset-xl-1 align-self-center column-btn" style="margin-left: 16px;"><a class="btn d-inline-flex justify-content-center align-items-center btn-admin-user" role="button" id="btn-volver" href="index.html"><img class="float-left" src="assets/img/arrowleft64.png" style="width: 21px;margin-right: 8px;">Volver</a></div>
+    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 offset-xl-1 align-self-center column-btn" style="margin-left: 16px;"></div>
     <!-- End: Boton Volver -->
     <!-- Start: Login Form Clean -->
     <div class="login-clean" style="height: 100%;">
@@ -25,7 +25,7 @@
             <h2 class="sr-only">Login Form</h2>
             <!-- End: Titulo del login -->
             <div class="illustration">
-                <p style="margin: 0px;font-size: 23px;font-family: Lato, sans-serif;color: #27d960;">¿Para quien es la hora?</p>
+                <p style="margin: 0px;font-size: 23px;font-family: Lato, sans-serif;color: #27d960;">Ingrese su contraseña</p>
             </div>
             <div class="form-group"><input class="form-control" type="text" placeholder="Rut" name="rut" value=" {{$rut}}" style="font-family: Lato, sans-serif;"><input class="form-control input-login" type="password" placeholder="Contraseña" name="password" style="font-family: Lato, sans-serif;"></div>
             <div class="form-row align-items-center">
@@ -35,7 +35,7 @@
                 <div class="col-xl-6" style="padding: 0px;padding-top: 0px;padding-left: 5px;padding-right: 5px;max-width: 50%;">
                     <div class="form-group" style="margin: 0px;"><button class="btn btn-outline-primary botonlgaceptar" type="submit" role="button" style="width: 100%;font-family: Lato, sans-serif;">Aceptar</button></div>
                 </div>
-            </div><a class="forgot" href="#" style="margin-top: 10px;">He olvidado mi clave</a></form>
+            </div><a class="forgot" href="#" style="margin-top: 10px;">He olvidado mi contraseña</a></form>
     </div>
     <!-- End: Login Form Clean -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

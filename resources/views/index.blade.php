@@ -15,14 +15,14 @@
 
 <body class="background-login">
     <!-- Start: Boton Volver -->
-    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 offset-xl-1 align-self-center column-btn" style="margin-left: 16px;"><a class="btn d-inline-flex justify-content-center align-items-center btn-admin-user" role="button" id="btn-volver" href="index.html"><img class="float-left" src="assets/img/arrowleft64.png" style="width: 21px;margin-right: 8px;">Volver</a></div>
+    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 offset-xl-1 align-self-center column-btn" style="margin-left: 16px;"></div>
     <!-- End: Boton Volver -->
     <!-- Start: Login Form Clean -->
     <div class="login-clean" style="height: 100%;">
         <form id="cardlogin" method="POST" action="{{ route('validar') }}">
         @csrf
             <!-- Start: Titulo del login -->
-            <h2 class="sr-only">Login Form</h2>
+            <h2 class="sr-only">Ingrese su Rut</h2>
             <!-- End: Titulo del login -->
             <div class="illustration">
                 <p style="margin: 0px;font-size: 23px;font-family: Lato, sans-serif;color: #27d960;">Ingrese su Rut</p>
