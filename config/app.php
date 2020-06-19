@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Chile/Continental',
 
     /*
     |--------------------------------------------------------------------------
@@ -79,8 +79,9 @@ return [
     | to any of the locales which will be supported by the application.
     |
     */
-
-    'locale' => 'en',
+    
+    //Línea editada pra configurar idioma de errores. Se ha reemmplazado "en" por "es".
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------

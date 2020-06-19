@@ -30,7 +30,7 @@
                             <li class="nav-item" role="presentation"><a class="nav-link" href="citasPendientes.html">Mis reservas</a></li>
                             @role('administradorCyC')
                             <li class="nav-item" role="presentation"><a class="nav-link" href="administrarCupos.html">Administrar cupos</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="administrarCitas.html">Administrar citas</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('indexCyC')}}">Administrar citas</a></li>
                             @endrole
                             @role('administradorUsuarios')
                             <li class="nav-item" role="presentation"><a class="nav-link" href="ambienteAdAdminDoctores.html">Ambiente Administrativo Usuarios</a></li>
@@ -51,7 +51,7 @@
                                     </form>
                                 </div>
                             </li>
-                            
+
                         </ul>
                     </div>
                 </div>

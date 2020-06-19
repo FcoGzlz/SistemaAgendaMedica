@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html>
+    @extends('layouts.navbar')
+    @section('content')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Prototipo Proyecto Consultorio Estable 11-05-2020</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400">
-    <link rel="stylesheet" href="assets/css/styles.min.css">
-</head>
 
-<body>
     <div class="row">
         <!-- Start: Row boton volver -->
         <div class="col-sm-12 col-xl-12 offset-xl-0 align-self-center">
@@ -49,41 +37,26 @@
                                 <tr>
                                     <th style="min-width: 97px;">Rut</th>
                                     <th style="min-width: 125px;">Nombres</th>
-                                    <th style="min-width: 142px;">Apellido Materno</th>
                                     <th style="min-width: 142px;">Apellido Paterno</th>
-                                    <th style="min-width: 81px;">Genero</th>
+                                    <th style="min-width: 142px;">Apellido Materno</th>
                                     <th style="min-width: 254px;">Correo</th>
                                     <th style="min-width: 89px;">Telefono</th>
+                                    <th style="min-width: 89px;">Especialidad</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($doctores as $doctor)
                                 <tr>
-                                    <td>19933345-9</td>
-                                    <td>Francisco Javier</td>
-                                    <td>Gonzalez</td>
-                                    <td>Marin</td>
-                                    <td>Masculino</td>
-                                    <td>francisco.gonzale188@gmail.com</td>
-                                    <td>425698359</td>
+                                <td>{{$doctor->rut}}</td>
+                                <td>{{$doctor->nombres}}</td>
+                                <td>{{$doctor->apellidoPaterno}}</td>
+                                <td>{{$doctor->apellidoMaterno}}</td>
+                                <td>{{$doctor->email}}</td>
+                                <td>{{$doctor->telefono}}</td>
+                                <td>{{$doctor->especialidad}}</td>
                                 </tr>
-                                <tr>
-                                    <td>20317815-8</td>
-                                    <td>Gabriel Arnoldo</td>
-                                    <td>Pelle</td>
-                                    <td>Asencio</td>
-                                    <td>Masculino</td>
-                                    <td>gabriel.pelle25@gmail.com</td>
-                                    <td>568258689</td>
-                                </tr>
-                                <tr>
-                                    <td>18648523-5</td>
-                                    <td>Felipe Hernan</td>
-                                    <td>Rodriguez</td>
-                                    <td>Rodriguez</td>
-                                    <td>Masculino</td>
-                                    <td>felipe.rodriguez20@gmail.com</td>
-                                    <td>568648248</td>
-                                </tr>
+                                @endforeach
+
                             </tbody>
                         </table>
                     </div>
@@ -101,22 +74,45 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col">
-                            <form>
+                        <form method="POST" action="{{route('addDoctor')}}">
+                            @csrf
                                 <div class="form-row">
-                                    <div class="col-xl-4"><label>Rut</label><input class="form-control d-flex" type="text"></div>
-                                    <div class="col"><label>Nombres</label><input class="form-control d-flex" type="text"></div>
+                                    <div class="col-xl-4"><label>Rut</label><input class="form-control d-flex" type="text" name="rut"></div>
+                                    <div class="col"><label>Nombres</label><input class="form-control d-flex" type="text" name="nombres"></div>
                                 </div>
                                 <div class="form-row">
                                     <!-- Start: Apellido Paterno -->
-                                    <div class="col-xl-6"><label>Apellido Paterno</label><input class="form-control d-flex" type="text"></div>
+                                    <div class="col-xl-6"><label>Apellido Paterno</label><input class="form-control d-flex" type="text" name="apellidoPaterno"></div>
                                     <!-- End: Apellido Paterno -->
                                     <!-- Start: Apellido Materno -->
-                                    <div class="col"><label>Apellido Materno</label><input class="form-control d-flex" type="text"></div>
+                                    <div class="col"><label>Apellido Materno</label><input class="form-control d-flex" type="text" name="apellidoMaterno"></div>
                                     <!-- End: Apellido Materno -->
                                 </div>
+
+                                <div class="form-row" style="margin-right: -5px;margin-top: -2px;margin-bottom: -9px;">
+                                    <div class="col" style="margin-top: 25px;">
+                                        <!-- Start: Custom seleccionar especialidad --><div>
+
+<div class="input-group mb-3 edtFormMarg">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">Especialidad</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect01" name="especialidad">
+    <option selected>Escoge una opción</option>
+   @foreach ($especialidades as $especialidad)
+  <option value="{{$especialidad->id}}">{{$especialidad->nombre}}</option>>
+   @endforeach
+  </select>
+</div>
+
+</div>
+                                        <!-- End: Custom seleccionar especialidad -->
+                                    </div>
+                                </div>
+
                                 <div class="form-row">
                                     <!-- Start: Apellido Paterno -->
-                                    <div class="col-xl-12"><label>Correo</label><input class="form-control d-flex" type="text"></div>
+                                    <div class="col-xl-12"><label>Correo</label><input class="form-control d-flex" type="text" name="email"></div>
                                     <!-- End: Apellido Paterno -->
                                 </div>
                                 <div class="form-row">
@@ -124,21 +120,21 @@
                                         <div class="form-group"><label>Genero</label>
                                             <div class="form-row">
                                                 <div class="col-xl-6">
-                                                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-M" name="gridGenero" value="option1"><label class="form-check-label" for="formCheck-M">Masculino</label></div>
+                                                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-M" name="genero" value="option1"><label class="form-check-label" for="formCheck-M">Masculino</label></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-F" name="gridGenero" value="option2"><label class="form-check-label" for="formCheck-F">Femenino</label></div>
+                                                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-F" name="genero" value="option2"><label class="form-check-label" for="formCheck-F">Femenino</label></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col"><label>Telefono</label><input class="form-control d-flex" type="text"></div>
+                                    <div class="col"><label>Telefono</label><input class="form-control d-flex" type="text" name="telefono"></div>
                                 </div>
-                            </form>
+
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light btn-admin-user" type="button" data-dismiss="modal">Volver</button><button class="btn btn-primary btn-admin-user" type="button">Agregar</button></div>
+                <div class="modal-footer"><button class="btn btn-light btn-admin-user" type="button" data-dismiss="modal">Volver</button><button class="btn btn-primary btn-admin-user" type="submit">Agregar</button></div></form>
             </div>
         </div>
     </div>
@@ -171,17 +167,4 @@
             </div>
         </div>
     </div>
-    <!-- End: PopUp Confirmacion de eliminar -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/smart-forms.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lightpick@1.3.4/lightpick.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
-    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
-    <script src="assets/js/script.min.js"></script>
-</body>
-
-</html>
+    @endsection

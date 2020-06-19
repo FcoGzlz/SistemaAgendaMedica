@@ -1,29 +1,13 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Prototipo Proyecto Consultorio Estable 11-05-2020</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400">
-    <link rel="stylesheet" href="assets/css/styles.min.css">
-</head>
+@extends('layouts.navbar')
+@section('content')
 
-<body>
 
-    <div w3-include-html="navbar.html"></div>
-
-    
-
-    <div class="row">
+    {{-- <div class="row">
         <!-- Start: Boton Volver -->
         <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 offset-xl-1 align-self-center column-btn" style="margin-left: 16px;"><a class="btn d-inline-flex justify-content-center align-items-center btn-admin-user" role="button" id="btn-volver" href="indexuserlog.html"><img class="float-left" src="assets/img/arrowleft64.png" style="width: 21px;margin-right: 8px;">Volver</a></div>
         <!-- End: Boton Volver -->
-    </div>
+    </div> --}}
     <div class="row">
         <div class="col">
             <h2 class="text-center">Administracion de Citas</h2>
@@ -33,7 +17,7 @@
         <div class="col-xl-6 offset-xl-3" style="padding-top: 15px;">
             <form class="date-select">
                 <div class="form-group">
-                    <!-- Start: Custom seleccionar especialidad --><div>
+                    {{-- <!-- Start: Custom seleccionar especialidad --><div>
 
 <div class="input-group mb-3 edtFormMarg">
   <div class="input-group-prepend">
@@ -50,7 +34,7 @@
 </div>
                     <!-- End: Custom seleccionar especialidad -->
                     <div class="input-group mb-4">
-                        <div class="input-group-prepend"><span class="input-group-text">Fecha</span></div><input class="form-control" type="text" id="datePicker"></div>
+                        <div class="input-group-prepend"><span class="input-group-text">Fecha</span></div><input class="form-control" type="text" id="datePicker"></div> --}}
                 </div>
             </form>
         </div>
@@ -59,78 +43,71 @@
         <div class="col-xl-10 offset-xl-1">
             <div class="row">
                 <div class="col">
-                    <h5>Citas</h5>
+                    <h5>Citas por confirmar para hoy</h5>
                 </div>
             </div>
             <div class="card">
                 <div class="card-body" style="padding: 14px;">
-                    <div class="row">
-                        <div class="col">
-                            <h6>Especialidad</h6>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <p>Citas para el dia "nombreDia" + "dd" + de + "nombreMes"</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="table-responsive tableadminuser" id="table-admin-users">
-                                <table class="table table-sm">
-                                    <thead>
-                                        <tr>
-                                            <th style="min-width: 97px;">Rut</th>
-                                            <th style="min-width: 125px;">Nombres</th>
-                                            <th style="min-width: 90px;">Apellido Materno</th>
-                                            <th style="min-width: 90px;">Apellido Paterno</th>
-                                            <th style="min-width: 81px;">Genero</th>
-                                            <th style="min-width: 230px;">Correo</th>
-                                            <th style="min-width: 89px;">Telefono</th>
-                                            <th>Hora</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>19933345-9</td>
-                                            <td>Francisco Javier</td>
-                                            <td>Gonzalez</td>
-                                            <td>Marin</td>
-                                            <td>Masculino</td>
-                                            <td>francisco.gonzale188@gmail.com</td>
-                                            <td>425698359</td>
-                                            <td>HH:MM</td>
-                                        </tr>
-                                        <tr>
-                                            <td>20317815-8</td>
-                                            <td>Gabriel Arnoldo</td>
-                                            <td>Pelle</td>
-                                            <td>Asencio</td>
-                                            <td>Masculino</td>
-                                            <td>gabriel.pelle25@gmail.com</td>
-                                            <td>568258689</td>
-                                            <td>HH:MM</td>
-                                        </tr>
-                                        <tr>
-                                            <td>18648523-5</td>
-                                            <td>Felipe Hernan</td>
-                                            <td>Rodriguez</td>
-                                            <td>Rodriguez</td>
-                                            <td>Masculino</td>
-                                            <td>felipe.rodriguez20@gmail.com</td>
-                                            <td>568648248</td>
-                                            <td>HH:MM</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+
+                    @empty($citas)
+                        <h5 class="text-center">No hay citas agendadas</h5>
+                        @else
+                        {{-- <div class="row">
+                            <div class="col">
+                                <h6>Especialidad</h6>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                        <div class="row">
+                            <div class="col">
+                                <p>Citas para el dia "nombreDia" + "dd" + de + "nombreMes"</p>
+                            </div>
+                        </div> --}}
+                        <div class="card">
+                        <form method="POST" action="{{route('confimarCita')}}">
+                            @csrf
+                            <div class="card-body">
+                                <div class="table-responsive tableadminuser" id="table-admin-users">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th style="min-width: 97px;">Rut</th>
+                                                <th style="min-width: 125px;">Nombres</th>
+                                                <th style="min-width: 90px;">Apellido Paterno</th>
+                                                <th style="min-width: 90px;">Apellido Materno</th>
+                                                <th style="min-width: 81px;">Genero</th>
+                                                <th style="min-width: 89px;">Telefono</th>
+                                                <th style="min-width: 89px;">Hora de la atención</th>
+                                                <th style="min-width: 89px;">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           @foreach ($citas as $cita)
+                                           <tr>
+                                           <input type="hidden" name="idCita" value="{{$cita->id}}">
+                                            <td>{{$cita->rut}}</td>
+                                            <td>{{$cita->nombres}}</td>
+                                            <td>{{$cita->apellidoPaterno}}</td>
+                                            <td>{{$cita->apellidoMaterno}}</td>
+                                            <td>{{$cita->genero}}</td>
+                                            <td>{{$cita->telefono}}</td>
+                                            <td>{{Carbon\Carbon::parse($cita->hora)->format('h:m')}}</td>
+                                           <td> <button class="btn btn-admin-user" type="submit">Confimar Cita</button>
+                                            </td>
+                                        </tr>
+                                           @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                    @endempty
+
+                    {{-- <div class="row">
                         <div class="col text-right" style="margin-top: 16px;">
                             <div class="btn-group grupo-btn-adminuser" role="group" style="margin-right: 0px;"><button class="btn btn-admin-user" type="button" data-toggle="modal" data-target="#reagendarCitaPopUp">Reagendar Cita</button><button class="btn btn-admin-user" type="button" data-toggle="modal" data-target="#cancelarCitaPopUp">Cancelar Cita</button></div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -245,16 +222,5 @@
         </div>
     </div>
     <!-- End: Reagendar Cita PopUp -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/smart-forms.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lightpick@1.3.4/lightpick.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
-    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
-    <script src="assets/js/script.min.js"></script>
-</body>
 
-</html>
+    @endsection

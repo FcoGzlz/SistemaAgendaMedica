@@ -10,11 +10,4 @@ class Cupo extends Model
     protected $primaryKey = 'id';
 
     
-
-    //Scope
-    public function scopeEspecialidad($query, $especialidad){
-        if ($especialidad) {
-            return $query->where('id_especialidad', '=', "$especialidad");
-        }
-    }
 }

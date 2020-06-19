@@ -26,6 +26,7 @@ class Relaciones extends Migration
             $table->foreign('id_paciente')->references('id')->on('users');//Clave foránea que relaciona el campo 'id_paciente' con el campo 'id' de la tabla users
             $table->foreign('id_cita')->references('id')->on('cita');//Clave foránea que relaciona el campo 'id_cita cn el campo 'id' de la tabla 'cita'
         });
+        
         Schema::table('doctor_cita', function (Blueprint $table) {
             $table->foreign('id_doctor')->references('id')->on('users');//Clave foránea que relaciona el campo 'id_dcotor' con el campo 'id' de la tabla 'users'
             $table->foreign('id_cita')->references('id')->on('cita');//Clave foránea que relaciona el campo 'id_cita cn el campo 'id' de la tabla 'cita'

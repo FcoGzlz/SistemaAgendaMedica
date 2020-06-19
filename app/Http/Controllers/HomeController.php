@@ -27,16 +27,16 @@ class HomeController extends Controller
         $usuario = Auth::user();
         $rol = $usuario->roles->implode('name', ', ');
 
-
         switch ($rol) {
             case 'superAdmin':
                 # code...
                 break;
 
             case 'administradorCyC':
+                return redirect()->route('indexCyC');
                 break;
             case 'administradorUsuarios':
-                return redirect()->route('AdminUsers');
+                return redirect()->route('AdminUsersCyC');
                 break;
             case 'paciente':
                 return redirect()->route('indexPaciente');

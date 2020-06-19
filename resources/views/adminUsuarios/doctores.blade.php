@@ -1,12 +1,14 @@
     @extends('layouts.navbar')
+
     <!-- Start: Sidebar Menu -->
     @section('content')
+    {{-- @extends('layouts.AAU') --}}
     <div id="wrapper">
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand"><a class="d-md-none gu-hidden li-brand-small">G.U.</a> <a class="d-none d-md-block a-hidden-sidebar">Gestor de usuarios</a></li>
-                <li class="d-flex d-md-block justify-content-center align-items-center"><a class="d-flex justify-content-center align-items-center" href="#"><img class="d-md-none" src="assets/img/citasycupos64.png" style="width: 40px;" href="#"></a> <a class="d-none d-md-flex" href="ambienteAdAdminDoctores.html">Administrar Ad. Doctores</a></li>
-                <li class="d-flex d-md-block justify-content-center align-items-center"><a class="d-flex justify-content-center align-items-center" href="#"><img class="d-md-none" src="assets/img/doctor64.png" style="width: 40px;" href="#"></a> <a class="d-none d-md-flex" href="ambienteAdAdminCitasyCupos.html">Administrar Ad. Cupos y Citas</a></li>
+            <li class="d-flex d-md-block justify-content-center align-items-center"><a class="d-flex justify-content-center align-items-center" href="{{route('AdminDoctors')}}"><img class="d-md-none" src="assets/img/citasycupos64.png" style="width: 40px;" href="#"></a> <a class="d-none d-md-flex" href="{{route('AdminDoctors')}}">Doctores</a></li>
+            <li class="d-flex d-md-block justify-content-center align-items-center"><a class="d-flex justify-content-center align-items-center" href="{{route('AdminUsersCyC')}}"><img class="d-md-none" src="assets/img/doctor64.png" style="width: 40px;" href="#"></a> <a class="d-none d-md-flex" href="{{route('AdminUsersCyC')}}">Administrar Ad. Cupos y Citas</a></li>
             </ul>
         </div>
     </div>
@@ -21,14 +23,14 @@
     <!-- Start: Botones Tabla -->
     <div class="row btn-admin">
         <div class="col text-right div-adminusuario column-btn">
-            <div class="btn-group grupo-btn-adminuser" role="group"><button class="btn btn-admin-user" type="button" data-toggle="modal" data-target="#modal-admin">Editar</button><button class="btn btn-admin-user" type="button" data-toggle="modal" data-target="#modal-confirmeliminar">Eliminar</button>
+            <div class="btn-group grupo-btn-adminuser" role="group">
                 <button class="btn btn-admin-user" type="button" data-toggle="modal" data-target="#modal-admin">Agregar</button>
             </div>
         </div>
     </div>
     <!-- End: Botones Tabla -->
     <!-- Start: Tabla -->
-    @empty($adminsCyC)
+    @empty($doctores)
     <h1>No hay usuarios agregados</h1>
     @else
     <div class="row">
@@ -43,27 +45,25 @@
                                     <th style="min-width: 125px;">Nombres</th>
                                     <th style="min-width: 90px;">Apellido Paterno</th>
                                     <th style="min-width: 90px;">Apellido Materno</th>
-                                    <th style="min-width: 81px;">Genero</th>
                                     <th style="min-width: 230px;">Correo</th>
                                     <th style="min-width: 89px;">Telefono</th>
+                                    <th style="min-width: 89px;">Especialidad</th>
                                     <th style="min-width: 89px;">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-                                @foreach($adminsCyC as $adminCyC)
+                                @foreach ($doctores as $doctor)
                                 <tr>
-                                    <td> {{ $adminCyC->rut }}</td>
-                                    <td> {{ $adminCyC->nombres }}</td>
-                                    <td> {{ $adminCyC->apellidoPaterno }}</td>
-                                    <td> {{ $adminCyC->apellidoMaterno }}</td>
-                                    <td> {{ $adminCyC->genero }}</td>
-                                    <td> {{ $adminCyC->email }}</td>
-                                    <td> {{ $adminCyC->telefono }}</td>
-                                    <td> <button class="btn btn-admin-user" type="button" data-toggle="modal" data-target="#modal-admin">Editar</button><button class="btn btn-admin-user" type="button" data-toggle="modal" data-target="#modal-confirmeliminar">Eliminar</button></td>
+                                <td>{{$doctor->rut}}</td>
+                                <td>{{$doctor->nombres}}</td>
+                                <td>{{$doctor->apellidoPaterno}}</td>
+                                <td>{{$doctor->apellidoMaterno}}</td>
+                                <td>{{$doctor->email}}</td>
+                                <td>{{$doctor->telefono}}</td>
+                                <td>{{$doctor->especialidad}}</td>
+                                <td> <button class="btn btn-admin-user" type="button" data-toggle="modal" data-target="#modal-admin">Editar</button><button class="btn btn-admin-user" type="button" data-toggle="modal" data-target="#modal-confirmeliminar">Eliminar</button></td>
                                 </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>
@@ -96,7 +96,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col">
-
+<form method="POST" action="{{route('addDoctor')}}">
                             @csrf
                             <div class="form-row">
                                 <div class="col-xl-4"><label>Rut</label><input class="form-control d-flex" type="text" id="rut" name="rut"></div>
@@ -110,6 +110,29 @@
                                 <div class="col"><label>Apellido Materno</label><input class="form-control d-flex" type="text" id="apellidoMaterno" name="apellidoMaterno"></div>
                                 <!-- End: Apellido Materno -->
                             </div>
+
+
+                            <div class="form-row" style="margin-right: -5px;margin-top: -2px;margin-bottom: -9px;">
+                                <div class="col" style="margin-top: 25px;">
+                                    <!-- Start: Custom seleccionar especialidad --><div>
+
+<div class="input-group mb-3 edtFormMarg">
+<div class="input-group-prepend">
+<label class="input-group-text" for="inputGroupSelect01">Especialidad</label>
+</div>
+<select class="custom-select" id="inputGroupSelect01" name="especialidad">
+<option selected>Escoge una opción</option>
+@foreach ($especialidades as $especialidad)
+<option value="{{$especialidad->id}}">{{$especialidad->nombre}}</option>>
+@endforeach
+</select>
+</div>
+
+</div>
+                                    <!-- End: Custom seleccionar especialidad -->
+                                </div>
+                            </div>
+
                             <div class="form-row">
                                 <!-- Start: Apellido Paterno -->
                                 <div class="col-xl-12"><label>Correo</label><input class="form-control d-flex" type="text" id="email"name="email"></div>
@@ -130,8 +153,8 @@
                                 </div>
                                 <div class="col"><label>Telefono</label><input class="form-control d-flex" type="text" id="telefono" name="telefono"></div>
                             </div>
-                            <div class="modal-footer"><button class="btn btn-light btn-admin-user" type="button" data-dismiss="modal">Volver</button><button class="btn btn-primary btn-admin-user" id="agregar" type="button">Agregar</button></div>
-
+                            <div class="modal-footer"><button class="btn btn-light btn-admin-user" type="button" data-dismiss="modal">Volver</button><button class="btn btn-primary btn-admin-user" id="agregar" type="submit">Agregar</button></div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -172,30 +195,30 @@
 
     <script type="text/javascript">
     //Función que agrega datos del usuario a través de Ajax
-        $('#agregar').click(function() {
-            $.ajax({
-                type: 'POST',
-                url: 'addAdminCyC',
-                data: {
-                    '_token': $('input[name=_token]').val(),
-                    'rut': $('input[name=rut]').val(),
-                    'nombres': $('input[name=nombres]').val(),
-                    'apellidoPaterno': $('input[name=apellidoPaterno]').val(),
-                    'apellidoMaterno': $('input[name=apellidoMaterno]').val(),
-                    'email': $('input[name=email]').val(),
-                    'genero': $('input[name=genero]').val(),
-                    'telefono': $('input[name=telefono]').val(),
-                },
+        // $('#agregar').click(function() {
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: '/crearUsuario',
+        //         data: {
+        //             '_token': $('input[name=_token]').val(),
+        //             'rut': $('input[name=rut]').val(),
+        //             'nombres': $('input[name=nombres]').val(),
+        //             'apellidoPaterno': $('input[name=apellidoPaterno]').val(),
+        //             'apellidoMaterno': $('input[name=apellidoMaterno]').val(),
+        //             'email': $('input[name=email]').val(),
+        //             'genero': $('input[name=genero]').val(),
+        //             'telefono': $('input[name=telefono]').val(),
+        //         },
 
-            })
-            //Luego de que los datos hayan sido enviados, se limpian los campos
-            $('#rut').val(''),
-            $('#nombres').val(''),
-            $('#apellidoPaterno').val(''),
-            $('#apellidoMaterno').val(''),
-            $('#email').val('')
-            $('#genero').val('')
-            $('#telefono').val('')
-        })
+        //     })
+        //     //Luego de que los datos hayan sido enviados, se limpian los campos
+        //     $('#rut').val(''),
+        //     $('#nombres').val(''),
+        //     $('#apellidoPaterno').val(''),
+        //     $('#apellidoMaterno').val(''),
+        //     $('#email').val('')
+        //     $('#genero').val('')
+        //     $('#telefono').val('')
+        // })
     </script>
     @endsection

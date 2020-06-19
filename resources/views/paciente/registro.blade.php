@@ -29,89 +29,118 @@
             </div>
             <div class="form-group">
                 <div class="form-row">
-                    <div class="col-xl-12"><label>Rut</label><input class="form-control d-flex" type="text" name="rut" value="{{$rut}}"></div>
+                    <div class="col-xl-12"><label>Rut</label>
+                        <input class="form-control d-flex @error('rut') is-invalid @enderror" type="text" name="rut" value="{{$rut}}" required autocomplete="rut" autofocus>
+                    </div>
+                    @error('rut')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
 
-                @error('rut')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+
 
                 <div class="form-row">
-                    <div class="col-xl-12"><label>Nombres</label><input class="form-control d-flex" type="text" name="nombres"></div>
+                    <div class="col-xl-12"><label>Nombres</label>
+                        <input class="form-control d-flex @error('nombres') is-invalid @enderror" type="text" name="nombres" required autocomplete="nombres" autofocus>
+                    </div>
+                    @error('nombres')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
 
-                @error('nombres')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+
                 <div class="form-row">
 
-                    <div class="col-xl-12"><label>Apellido Paterno</label><input class="form-control d-flex" type="text" name="apellidoPaterno"></div>
+                    <div class="col-xl-12"><label>Apellido Paterno</label>
+                        <input class="form-control d-flex @error('apellidoPaterno') is-invalid @enderror" type="text" name="apellidoPaterno" required autocomplete="apellidoPaterno" autofocus>
+                    </div>
+                    @error('apellidoPaterno')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
 
-                @error('apellidoPaterno')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+
 
                 <div class="form-row">
-                    <div class="col-xl-12"><label>Apellido Materno</label><input class="form-control d-flex" type="text" name="apellidoMaterno"></div>
+                    <div class="col-xl-12"><label>Apellido Materno</label>
+                        <input class="form-control d-flex @error('apellidoMaterno') is-invalid @enderror" type="text" name="apellidoMaterno" required autocomplete="apellidoMaterno" required autocomplete="apellidoMaterno" autofocus>
+                        @error('apellidoMaterno')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                    </div>
+                   
                 </div>
 
                 <div class="form-row">
-                    <div class="col-xl-12"><label>Correo</label><input class="form-control d-flex" type="email" name="email"></div>
+                    <div class="col-xl-12"><label>Correo</label>
+                        <input class="form-control d-flex @error('email') is-invalid @enderror" type="email" name="email" required autocomplete="email" autofocus>
+                    </div>
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
 
-                @error('email')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+
 
                 <div class="form-row">
                     <div class="col-sm-4 col-md-4 col-xl-4">
                         <div class="form-group"><label>Genero</label>
                             <div class="form-row">
                                 <div class="col-6 col-sm-12 col-xl-12">
-                                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-M" name="genero" value="Masculino"><label class="form-check-label" for="formCheck-M">Masculino</label></div>
+                                    <div class="form-check"><input class="form-check-input @error('genero') is-invalid @enderror" type="radio" id="formCheck-M" name="genero" value="Masculino" required autocomplete="genero" autofocus><label class="form-check-label" for="formCheck-M">Masculino</label>
+                                    </div>
                                 </div>
                                 <div class="col">
-                                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-F" name="genero" value="Femenino"><label class="form-check-label" for="formCheck-F">Femenino</label></div>
+                                    <div class="form-check"><input class="form-check-input @error('genero') is-invalid @enderror" type="radio" id="formCheck-F" name="genero" value="Femenino" required autocomplete="genero" autofocus><label class="form-check-label" for="formCheck-F">Femenino</label>
+                                    </div>
+
                                 </div>
+                                @error('genero')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
 
-                    @error('genero')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
+                    <div class="col"><label>Telefono</label>
+                        <input class="form-control d-flex @error('telefono') is-invalid @enderror" type="text" name="telefono" required autocomplete="telefono" autofocus>
+                        @error('telefono')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
 
-                    <div class="col"><label>Telefono</label><input class="form-control d-flex" type="text" name="telefono"></div>
 
-                    @error('telefono')
+                </div>
+                <div class="form-row">
+                    <div class="col-xl-12"><label>Contraseña</label>
+                        <input class="form-control d-flex @error('password') is-invalid @enderror" type="password" name="password" required autocomplete="password" autofocus>
+                    </div>
+                    @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
                 </div>
-                <div class="form-row">
-                    <div class="col-xl-12"><label>Contraseña</label><input class="form-control d-flex" type="password" name="password"></div>
-                </div>
 
-                @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-                
+
                 <div class="form-row">
-                    <div class="col-xl-12"><label>Repetir contraseña</label><input class="form-control d-flex" type="password"></div>
+                    <div class="col-xl-12"><label>Repetir contraseña</label>
+                        <input class="form-control d-flex" type="password">
+                    </div>
                 </div>
             </div>
             <div class="form-row align-items-center">

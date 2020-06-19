@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class DoctorEspecialidad extends Model
 {
     protected $table = 'doctor_especialidad';
-    protected $primatyKey = 'id';
+    protected $primaryKey = 'id_doctor';
 }

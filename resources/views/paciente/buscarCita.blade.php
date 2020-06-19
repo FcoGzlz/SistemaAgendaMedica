@@ -25,8 +25,8 @@
                             </div>
                             <select class="custom-select" id="inputGroupSelect01">
                             <option selected>Escoge una opción</option>
-                                @foreach($especialidades as $especialidad)
-                                <option value="1">{{$especialidad->nombre}}</option>
+                                @foreach($$cupos as $cupo)
+                                <option value="1">{{$cupo->fecha}}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -63,7 +63,7 @@
     </div>
 </div>
 <!-- End: Botones para consulta -->
-@empty('$citas')
+@empty($citas)
 @else
 @foreach($citas as $cita )
 <!-- Start: Subtitulo para botones de horas -->
@@ -165,7 +165,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <p style="margin-bottom: 0px;">{{$cita->especialidad}}</p>
+                                                <p style="margin-bottom: 0px;"></p>
                                             </div>
                                         </div>
                                     </div>
