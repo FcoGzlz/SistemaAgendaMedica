@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html>
+@extends('layouts.navbar')
+@section('content')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Prototipo Proyecto Consultorio Estable 11-05-2020</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400">
-    <link rel="stylesheet" href="assets/css/styles.min.css">
-</head>
 
-<body>
+
     <div class="row">
         <!-- Start: Boton Volver -->
         <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 offset-xl-1 align-self-center column-btn" style="margin-left: 16px;"><a class="btn d-inline-flex justify-content-center align-items-center btn-admin-user" role="button" id="btn-volver" href="indexuserlog.html"><img class="float-left" src="assets/img/arrowleft64.png" style="width: 21px;margin-right: 8px;">Volver</a></div>
@@ -41,18 +30,15 @@
                                         </tr>
                                     </thead>
                                     <tbody class="text-nowrap">
+                                        @foreach ($citas as $cita)
                                         <tr>
-                                            <td>nombreDia dd de mm del aaaa</td>
-                                            <td>HH:MM am/pm</td>
-                                            <td>Lorem ipsum dolor sit amet, consectetur dsit.<br></td>
-                                            <td>Lorem ipsum dolor sit amet, consectetur dsit.<br></td>
+                                            <td>{{Carbon\Carbon::parse($cita->cupo->fecha)->toFormattedDateString('dd-mmmm-yyyyy')}}</td>
+                                            <td>{{Carbon\Carbon::parse($cita->cupo->hora)->format('h:m')}}</td>
+                                        <td>{{$cita->cupo->doctor->especialidad->nombre}}<br></td>
+                                        <td>{{$cita->cupo->doctor->nombres}}<br></td>
                                         </tr>
-                                        <tr>
-                                            <td>nombreDia dd de mm del aaaa</td>
-                                            <td>HH:MM am/pm<br></td>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                        </tr>
+                                        @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
@@ -227,16 +213,4 @@
         </div>
     </div>
     <!-- End: Anular PopUp -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/smart-forms.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lightpick@1.3.4/lightpick.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
-    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
-    <script src="assets/js/script.min.js"></script>
-</body>
-
-</html>
+    @endsection

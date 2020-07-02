@@ -51,14 +51,18 @@ Route::post('/agregarAdministradorCyC', 'UsuariosController@createAdminCyC')->na
 
 //FIN RUTAS ADMINISTRADOR DE USUARIOS
 
-
+//INICIO RUTAS DE PACIENTE
 Route::post('/registro', 'PacienteController@register')->name('registro');
 
 Route::get('/agendarCita', 'PacienteController@agendarCita')->name('agendarCita');
 
+Route::get('/citasPendientes', 'PacienteController@citasPendientes')->name('citasPendientes');
+//FIN RUTAS DE PACIENTE
 
 //INICIO RUTAS ADMINISTRADOR DE CUPOS Y CITAS
 Route::get('/indexCyC', 'CyCController@indexCitas')->name('indexCyC');
+Route::get('/indexCupos', 'CyCController@indexCupos')->name('indexCupos');
+Route::get('/addCupo', 'CyCController@addCupo')->name('addCupo');
 
 //Rutas de administración de citas
 Route::post('/confirmarCita', 'CyCController@confirmarCita')->name('confimarCita');

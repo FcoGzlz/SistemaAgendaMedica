@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightpick@1.3.4/css/lightpick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="assets/css/styles.min.css">
 </head>
 
@@ -27,9 +29,9 @@
                         <ul class="nav navbar-nav text-nowrap align-items-end justify-content-md-end align-items-md-center">
                             <li class="nav-item" role="presentation"><a class="nav-link active d-inline-flex" href="index.html" style="background-color: #27ae60;color: rgba(255,255,255,0.9);border-radius: 8px;width: 68px;min-width: 0px;padding-left: 16px;padding-right: 16px;">Inicio</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="buscarCita.html">Reserva tu hora</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="citasPendientes.html">Mis reservas</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('citasPendientes')}}">Mis reservas</a></li>
                             @role('administradorCyC')
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="administrarCupos.html">Administrar cupos</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('indexCupos')}}">Administrar cupos</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('indexCyC')}}">Administrar citas</a></li>
                             @endrole
                             @role('administradorUsuarios')
@@ -74,6 +76,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
     <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/boostrap/4.3.1/js/boostrap.min-js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="assets/js/script.min.js"></script>
 </body>
 

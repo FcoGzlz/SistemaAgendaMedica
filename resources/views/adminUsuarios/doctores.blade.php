@@ -60,7 +60,7 @@
                                 <td>{{$doctor->apellidoMaterno}}</td>
                                 <td>{{$doctor->email}}</td>
                                 <td>{{$doctor->telefono}}</td>
-                                <td>{{$doctor->especialidad}}</td>
+                                <td>{{$doctor->especialidad->nombre}}</td>
                                 <td> <button class="btn btn-admin-user" type="button" data-toggle="modal" data-target="#modal-admin">Editar</button><button class="btn btn-admin-user" type="button" data-toggle="modal" data-target="#modal-confirmeliminar">Eliminar</button></td>
                                 </tr>
                                 @endforeach

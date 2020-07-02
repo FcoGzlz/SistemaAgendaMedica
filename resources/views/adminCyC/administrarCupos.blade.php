@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html>
+@extends('layouts.navbar')
+@section('content')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Prototipo Proyecto Consultorio Estable 11-05-2020</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400">
-    <link rel="stylesheet" href="assets/css/styles.min.css">
-</head>
 
-<body>
+
+
     <div class="row">
         <!-- Start: Boton Volver -->
         <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 offset-xl-1 align-self-center column-btn" style="margin-left: 16px;"><a class="btn d-inline-flex justify-content-center align-items-center btn-admin-user" role="button" id="btn-volver" href="indexuserlog.html"><img class="float-left" src="assets/img/arrowleft64.png" style="width: 21px;margin-right: 8px;">Volver</a></div>
@@ -24,33 +14,80 @@
             <h2 class="text-center">Administracion de Cupos</h2>
         </div>
     </div>
+
+
+
     <div class="row">
-        <div class="col-xl-6 offset-xl-3" style="padding-top: 15px;">
-            <form class="date-select">
-                <div class="form-group">
-                    <!-- Start: Custom seleccionar especialidad --><div>
+        <div class="col-xl-6 offset-xl-3" >
 
-<div class="input-group mb-3 edtFormMarg">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Especialidad</label>
-  </div>
-  <select class="custom-select" id="inputGroupSelect01">
-    <option selected>Escoge una opción</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>
-</div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="col" style="padding-top: 15px;">
 
-</div>
-                    <!-- End: Custom seleccionar especialidad -->
-                    <div class="input-group mb-4">
-                        <div class="input-group-prepend"><span class="input-group-text">Fecha</span></div><input class="form-control" type="text" id="datePicker"></div>
+                        <form class="date-select" action="{{route('addCupo')}}">
+                            <div class="form-group">
+                                <!-- Start: Custom seleccionar especialidad --><div>
+
+            <div class="input-group mb-3 edtFormMarg">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Especialista</label>
+              </div>
+              <select class="custom-select" id="inputGroupSelect01" name="doctor">
+                <option selected>Escoge una opción</option>
+                @foreach ($doctores as $doctor)
+              <option value="{{$doctor->id}}">{{$doctor->rut}}</option>
+                @endforeach
+              </select>
+            </div>
+
+            </div>
+                                <!-- End: Custom seleccionar especialidad -->
+                                <div class="input-group mb-3 edtFormMarg">
+                                      <div class="input-group">
+                                          <div class="input-group-prepend">
+                                          <button type="button" id="DateToggle" class="input-group-text"><i class="fa fa-calendar-alt"></i></button>
+                                          </div>
+                                          <input type="text" id="DatePicker" class="form-control" name="fecha">
+                                      </div>
+                                  </div>
+
+                                  <div class="input-group mb-3 edtFormMarg">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                        <button type="button" id="TimeToggle" class="input-group-text"><i class="fa fa-clock-o"></i></button>
+                                        </div>
+                                        <input type="text" id="TimePicker" class="form-control" name="hora">
+                                    </div>
+                                </div>
+
+
+                                {{-- <div class="row btn-admin">
+                                    <div class="col text-right div-adminusuario column-btn">
+                                        <div class="btn-group grupo-btn-adminuser" role="group">
+                                            <button class="btn btn-admin-user" type="submit" data-toggle="modal" data-target="#modal-admin">Agregar Cupo</button>
+                                        </div>
+                                    </div>
+                                </div> --}}
+
+                                <div class="row">
+                                    <div class="col d-xl-flex justify-content-xl-end align-items-xl-center" style="padding: 0px;"><button class="btn d-block btn-admin-user btn-pedir-cita" type="submit" data-toggle="modal" data-target="#citaCompletaPopUp" style="margin-top: 0px;margin-right: 0px;margin-left: 0px;">Aceptar</button></div>
+                                </div>
+
+
+
+                        </form>
+
+                    </div>
                 </div>
-            </form>
+
+            </div>
+
+
         </div>
     </div>
-    <div class="row">
+
+
+    {{-- <div class="row">
         <div class="col-xl-10 offset-xl-1">
             <div class="card" style="padding: 14px;">
                 <div class="card-body" style="padding: 5px;">
@@ -158,9 +195,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Start: Confirmar Cita PopUp -->
-    <div class="modal fade" role="dialog" tabindex="-1" id="citaCompletaPopUp">
+    {{-- <div class="modal fade" role="dialog" tabindex="-1" id="citaCompletaPopUp">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -212,18 +249,52 @@
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancelar</button><button class="btn btn-admin-user" type="button">Aceptar</button></div>
             </div>
         </div>
-    </div>
-    <!-- End: Confirmar Cita PopUp -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/smart-forms.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lightpick@1.3.4/lightpick.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
-    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
-    <script src="assets/js/script.min.js"></script>
-</body>
+    </div> --}}
 
-</html>
+    <script>
+        $.datetimepicker.setLocale("es")
+        jQuery.datetimepicker.setDateFormatter('moment')
+
+
+        $('#DatePicker').datetimepicker({
+          timepicker: false,
+          datepicker: true,
+          step: 5,
+          format: 'DD-MM-YYYY',//'d-m-Y H:i', //formato de hora
+          /*value: '2020-7-1', //default time
+              weeks: true, //ver el numero de las semanas
+              hours12: true, //hora 24 o 12
+              step: 5, //salto de las horas
+              allowTimes: ['01:00','01,45','01:59','14:14'], //horas especificas
+              yearstart: 2020,*/
+
+          //https://www.youtube.com/watch?v=ub-vK97VOhE = video tutorial de como funcionan el datepicker
+        })
+        $('#DateToggle').on('click', function () {
+          $('#DatePicker').datetimepicker('toggle')
+        })
+
+        $('#TimePicker').datetimepicker({
+          timepicker: true,
+          datepicker: false,
+          step: 5,
+          format: 'HH:mm', //'d-m-Y H:i', //formato de hora
+          hours12: false,
+          minTime:'9:00',
+          maxTime:'17:00'
+          /*value: '2020-7-1', //default time
+              weeks: true, //ver el numero de las semanas
+              hours12: true, //hora 24 o 12
+              step: 5, //salto de las horas
+              allowTimes: ['01:00','01,45','01:59','14:14'], //horas especificas
+              yearstart: 2020,*/
+
+          //https://www.youtube.com/watch?v=ub-vK97VOhE = video tutorial de como funcionan el datepicker
+        })
+        $('#TimeToggle').on('click', function () {
+          $('#TimePicker').datetimepicker('toggle')
+        })
+      </script>
+
+
+  @endsection

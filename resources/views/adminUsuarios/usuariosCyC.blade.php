@@ -35,6 +35,15 @@
     @else
     <div class="row">
         <div class="col div-adminusuario card-tabla-admin">
+
+            <form method="GET" action="AdminUsersCyC">
+
+            <div class="form-row">
+                <div class="col-xl-4"><input class="form-control d-flex" type="text" id="rut" name="rutBuscar" placeholder="Buscar por Rut"></div>
+                <div class="col-xl-4"><input class="form-control d-flex" type="text" id="nombres" name="nombresBuscar" placeholder="Buscar por Nombres"></div>
+                <button class="btn btn-admin-user" type="submit">Buscar</button>
+            </div>
+        </form>
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive tableadminuser" id="table-admin-users">
@@ -53,7 +62,7 @@
                             </thead>
                             <tbody>
 
-                                @foreach($adminsCyC as $adminCyC)
+                                @foreach($adminsCyC as $key=> $adminCyC)
                                 <tr>
                                     <td> {{ $adminCyC->rut }}</td>
                                     <td> {{ $adminCyC->nombres }}</td>
@@ -62,7 +71,8 @@
                                     <td> {{ $adminCyC->genero }}</td>
                                     <td> {{ $adminCyC->email }}</td>
                                     <td> {{ $adminCyC->telefono }}</td>
-                                    <td> <button class="btn btn-admin-user" type="button" data-toggle="modal" data-target="#modal-admin">Editar</button><button class="btn btn-admin-user" type="button" data-toggle="modal" data-target="#modal-confirmeliminar">Eliminar</button></td>
+                                <td> <button class="btn btn-admin-user" type="button" data-toggle="modal" data-target="#modal-admin" data-id="{{$adminCyC->id}}" data-title="{{$adminCyC->nombre}}" >Editar</button>
+                                    <button class="btn btn-admin-user" type="button" data-toggle="modal" data-target="#modal-confirmeliminar">Eliminar</button></td>
                                 </tr>
                                 @endforeach
 

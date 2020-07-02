@@ -16,8 +16,13 @@ class UsuariosController extends Controller
 
     //INICIO DE SECCIÓN DE ADMINISTRACIÓN DE USUARIOS ADMINISTRADORES DE CUPOS Y CITAS.
     //Función 'indexAdminsCyC', la cual se encarga de recuperar la lista de los usuarios con el rol 'administradorCyC'.
-    public function indexAdminsCyC(){
-        $adminsCyC = User::role('administradorCyC')->get();//Se recuperan a todos los usuarios cuyo rol sea 'administradorCyC' y se guardan en la variable 'adminsCyC'.
+    public function indexAdminsCyC(Request $request){
+
+        $rut = $request->get('rutBuscar');
+        $nombres = $request->get('nombresBuscar');
+        $adminsCyC = User::role('administradorCyC')
+        ->Nombres($nombres)
+        ->paginate(4);//Se recuperan a todos los usuarios cuyo rol sea 'administradorCyC' y se guardan en la variable 'adminsCyC'.
         return view('adminUsuarios.usuariosCyC', compact('adminsCyC'));//Se retorna la vista junto con la lista de los usuarios anteriormente recuperados.
     }
 
@@ -62,11 +67,12 @@ class UsuariosController extends Controller
     // INICIO DE SECCIÓN DE ADMINISTRACIÓN DE DOCTORES.
 
     public function indexDoctores(){
-        $doctores = DB::table('doctor_especialidad')
-        ->join('users', 'users.id', '=', 'doctor_especialidad.id_doctor')
-        ->join('especialidad', 'especialidad.id', '=', 'doctor_especialidad.id_especialidad')
-        ->select('users.rut as rut', 'users.nombres as nombres', 'users.apellidoPaterno as apellidoPaterno', 'users.apellidoMaterno as apellidoMaterno', 'users.email as email', 'users.telefono as telefono', 'especialidad.nombre as especialidad')
-        ->get();
+        // $doctores = DB::table('doctor_especialidad')
+        // ->join('users', 'users.id', '=', 'doctor_especialidad.id_doctor')
+        // ->join('especialidad', 'especialidad.id', '=', 'doctor_especialidad.id_especialidad')
+        // ->select('users.rut as rut', 'users.nombres as nombres', 'users.apellidoPaterno as apellidoPaterno', 'users.apellidoMaterno as apellidoMaterno', 'users.email as email', 'users.telefono as telefono', 'especialidad.nombre as especialidad')
+        // ->get();
+        $doctores = User::role('doctor')->get();
         $especialidades = Especialidad::all();
         return view('adminUsuarios.doctores', compact('doctores'), compact('especialidades'));
     }

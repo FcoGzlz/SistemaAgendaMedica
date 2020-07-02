@@ -1,9 +1,9 @@
 @extends('layouts.navbar')
 @section('content')
 <!-- Start: H1 -->
-<div class="row d-xl-flex" style="margin: 0px;">
+<div class="rowm-xl-flex" style="margin: 0px;">
     <div class="col justify-content-xl-center colh1index" style="height: 45px;">
-        <h1 class="text-center d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-center justify-content-xl-center" style="font-family: Lato, sans-serif;"><br><strong>Para reservar una hora</strong><br><br></h1>
+        <h1 class="text-centerm-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-center justify-content-xl-center" style="font-family: Lato, sans-serif;"><br><strong>Para reservar una hora</strong><br><br></h1>
     </div>
 </div>
 <!-- End: H1 -->
@@ -140,9 +140,9 @@
                                         <div class="row">
 
                                             <div class="col">
-                                                <p style="margin-bottom: 0px;">Fecha</p>
-                                                <p style="margin-bottom: 0px;font-size: 14px;">{{$cita->fecha}}</p>
-                                                <p style="margin-bottom: 0px;">Mes</p>
+                                            <p style="margin-bottom: 0px;">{{Carbon\Carbon::parse($cita->cupo->fecha)->isoFormat('dddd')}}</p>
+                                                <p style="margin-bottom: 0px;font-size: 14px;">{{Carbon\Carbon::parse($cita->cupo->fecha)->format('d')}}</p>
+                                                <p style="margin-bottom: 0px;">{{Carbon\Carbon::parse($cita->cupo->fecha)->isoFormat('MMMM')}}</p>
                                             </div>
                                         </div>
 
@@ -153,7 +153,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <p style="margin-bottom: 0px;">"Hora"</p>
+                                            <p style="margin-bottom: 0px;">{{Carbon\Carbon::parse($cita->cupo->hora)->format('h:m')}}</p>
                                                 <p style="margin-bottom: 0px;">{{$cita->hora}}</p>
                                                 <p style="margin-bottom: 0px;">hrs</p>
                                             </div>
@@ -165,7 +165,9 @@
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <p style="margin-bottom: 0px;"></p>
+                                                <p style="margin-bottom: 0px;">
+                                                {{$cita->cupo->doctor->especialidad->nombre}}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>

@@ -39,7 +39,30 @@ class User extends Authenticatable
         'correo_verificado' => 'datetime',
     ];
 
- 
-    
-    
+    public function citas(){
+        return $this->hasMany('App\Cita', 'id_paciente');
+    }
+
+    public function cupos(){
+        return $this->hasMany('App\Cupo', 'id_doctor');
+    }
+
+    public function especialidad(){
+        return $this->hasOneThrough('App\Especialidad', 'App\DoctorEspecialidad', 'id_doctor', 'id', 'id' , 'id_especialidad');
+    }
+    //SCOPES
+
+    public function scopeRut($query, $rut ){
+        if ($rut) {
+            return $query->where('rut', 'LIKE', "%$rut%" );
+        }
+    }
+
+    public function scopeNombres($query, $nombres ){
+        if ($nombres) {
+            return $query->where('nombres', 'LIKE', "%$nombres%" );
+        }
+    }
+
+
 }
