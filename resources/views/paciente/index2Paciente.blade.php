@@ -28,7 +28,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h4 class="card-title"><a class="stretched-link rounded-circle" href="{{route('agendarCita')}}"></a>Consulta Medica</h4>
+                        <h4 class="card-title"><a class="stretched-link rounded-circle" href="{{route('buscarCupo')}}"></a>Consulta Medica</h4>
                         <p class="card-text">Agenda aqui tus consultas medicas</p>
                     </div>
                 </div>

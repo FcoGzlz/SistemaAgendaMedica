@@ -28,7 +28,7 @@
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav text-nowrap align-items-end justify-content-md-end align-items-md-center">
                             <li class="nav-item" role="presentation"><a class="nav-link active d-inline-flex" href="index.html" style="background-color: #27ae60;color: rgba(255,255,255,0.9);border-radius: 8px;width: 68px;min-width: 0px;padding-left: 16px;padding-right: 16px;">Inicio</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="buscarCita.html">Reserva tu hora</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('buscarCupo')}}">Reserva tu hora</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('citasPendientes')}}">Mis reservas</a></li>
                             @role('administradorCyC')
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('indexCupos')}}">Administrar cupos</a></li>

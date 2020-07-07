@@ -49,15 +49,15 @@ class PacienteController extends Controller
         return view('paciente.citasPendientes', compact('citas'));
     }
 
-    public function agendarCita(){
-
-        $cupos = Cupo::All();
-        return view('paciente.buscarCita', compact('cupos'));
+    public function agendarCita($id){
+        dd($id);
+        return(compact('cupos'));
     }
 
-    public function busquedaCupo(Request $request){
-        $especialidad = $request->get('especialidad');
-        $cupos = Cupo::All();
-        return(compact('cupos'));
+    public function buscarCupo(Request $request){
+
+        $doctores = User::role('doctor')->get();
+
+        return view('paciente.buscarCita', compact('doctores'));
     }
 }

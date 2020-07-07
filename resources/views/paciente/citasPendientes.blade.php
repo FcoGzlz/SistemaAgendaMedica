@@ -25,8 +25,8 @@
                                         <tr>
                                             <th id="fechaCitasPendientes">Fecha</th>
                                             <th id="horaCitasPendientes">Hora</th>
-                                            <th id="especialidadCitasPendientes">Especialidad</th>
                                             <th id="doctorCitasPendientes">Doctor</th>
+                                            <th id="especialidadCitasPendientes">Especialidad</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-nowrap">
@@ -34,8 +34,8 @@
                                         <tr>
                                             <td>{{Carbon\Carbon::parse($cita->cupo->fecha)->toFormattedDateString('dd-mmmm-yyyyy')}}</td>
                                             <td>{{Carbon\Carbon::parse($cita->cupo->hora)->format('h:m')}}</td>
-                                        <td>{{$cita->cupo->doctor->especialidad->nombre}}<br></td>
                                         <td>{{$cita->cupo->doctor->nombres}}<br></td>
+                                        <td>{{$cita->cupo->doctor->especialidad->nombre}}</td>
                                         </tr>
                                         @endforeach
 
@@ -48,7 +48,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <div class="col">
             <h4 class="text-center d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="margin-bottom: 16px;margin-top: 16px;">Al seleccionar una hora, escoge una opción</h4>
         </div>
@@ -211,6 +211,6 @@
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancelar</button><button class="btn btn-admin-user" type="button">Anular</button></div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- End: Anular PopUp -->
     @endsection

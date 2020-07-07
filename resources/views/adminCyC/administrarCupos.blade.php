@@ -277,11 +277,11 @@
         $('#TimePicker').datetimepicker({
           timepicker: true,
           datepicker: false,
-          step: 5,
+          step: 30,
           format: 'HH:mm', //'d-m-Y H:i', //formato de hora
           hours12: false,
           minTime:'9:00',
-          maxTime:'17:00'
+          maxTime:'21:00'
           /*value: '2020-7-1', //default time
               weeks: true, //ver el numero de las semanas
               hours12: true, //hora 24 o 12

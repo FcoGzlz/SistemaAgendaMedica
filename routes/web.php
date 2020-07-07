@@ -54,7 +54,9 @@ Route::post('/agregarAdministradorCyC', 'UsuariosController@createAdminCyC')->na
 //INICIO RUTAS DE PACIENTE
 Route::post('/registro', 'PacienteController@register')->name('registro');
 
-Route::get('/agendarCita', 'PacienteController@agendarCita')->name('agendarCita');
+Route::get('/buscarCupo', 'PacienteController@buscarCupo')->name('buscarCupo');
+
+Route::post('/agendarCita/{id}', ['uses' => 'PacienteController@agendarCita', 'as' => 'agendarCita']);
 
 Route::get('/citasPendientes', 'PacienteController@citasPendientes')->name('citasPendientes');
 //FIN RUTAS DE PACIENTE
