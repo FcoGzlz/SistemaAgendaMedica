@@ -33,7 +33,7 @@
                                         @foreach ($citas as $cita)
                                         <tr>
                                             <td>{{Carbon\Carbon::parse($cita->cupo->fecha)->toFormattedDateString('dd-mmmm-yyyyy')}}</td>
-                                            <td>{{Carbon\Carbon::parse($cita->cupo->hora)->format('h:m')}}</td>
+                                            <td>{{Carbon\Carbon::parse($cita->cupo->hora)->isoFormat('hh:mm')}}</td>
                                         <td>{{$cita->cupo->doctor->nombres}}<br></td>
                                         <td>{{$cita->cupo->doctor->especialidad->nombre}}</td>
                                         </tr>

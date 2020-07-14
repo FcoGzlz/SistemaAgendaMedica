@@ -8,6 +8,7 @@ use App\User;
 use App\Cita;
 use App\Cupo;
 use App\Especialidad;
+use Carbon\Carbon;
 use LengthException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -50,14 +51,33 @@ class PacienteController extends Controller
     }
 
     public function agendarCita($id){
-        dd($id);
-        return(compact('cupos'));
+       $cita = new Cita;
+       $cita->id_paciente = Auth::user()->id;
+       $cita->id_cupo = $id;
+       $cita->id_estado = 1;
+       $cita->save();
+       $cupo = Cupo::findOrFail($id);
+       $cupo->estado = 0;
+       $cupo->save();
+
+       return redirect()->route('citasPendientes');
     }
 
     public function buscarCupo(Request $request){
+        $espec = Especialidad::All();
+        if ($request->especialidad != null) {
+            $especialidad = Especialidad::where('nombre', $request->especialidad)->get();
+            if ($request->fecha != Carbon::now()->format('y-m-d')) {
+                $fecha=Carbon::parse($request->fecha)->format('Y-m-d');
+                return view('paciente.buscarCita', compact('especialidad', 'fecha', 'espec'));
+            }
 
-        $doctores = User::role('doctor')->get();
+        }else{
+            $fecha=Carbon::parse($request->fecha)->format('Y-m-d');
+            $especialidad = Especialidad::where('nombre', $request->especialidad);
+            return view('paciente.buscarCita', compact('especialidad','fecha', 'espec'));
+        }
 
-        return view('paciente.buscarCita', compact('doctores'));
+
     }
 }

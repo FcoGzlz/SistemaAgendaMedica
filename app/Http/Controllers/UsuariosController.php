@@ -21,8 +21,7 @@ class UsuariosController extends Controller
         $rut = $request->get('rutBuscar');
         $nombres = $request->get('nombresBuscar');
         $adminsCyC = User::role('administradorCyC')
-        ->Nombres($nombres)
-        ->paginate(4);//Se recuperan a todos los usuarios cuyo rol sea 'administradorCyC' y se guardan en la variable 'adminsCyC'.
+        ->get();//Se recuperan a todos los usuarios cuyo rol sea 'administradorCyC' y se guardan en la variable 'adminsCyC'.
         return view('adminUsuarios.usuariosCyC', compact('adminsCyC'));//Se retorna la vista junto con la lista de los usuarios anteriormente recuperados.
     }
 

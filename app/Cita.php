@@ -20,7 +20,7 @@ class Cita extends Model
    }
 
    public function cupo(){
-       return $this->hasOne('App\Cupo', 'id');
+       return $this->hasOne('App\Cupo', 'id', 'id_cupo');
    }
 
 

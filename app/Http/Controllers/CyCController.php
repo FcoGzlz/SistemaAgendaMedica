@@ -6,6 +6,7 @@ use App\Cita;
 use App\User;
 use App\Cupo;
 use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -45,13 +46,213 @@ class CyCController extends Controller
     }
 
     public function addCupo(Request $request){
-            $cupo = new Cupo();
-            $cupo->fecha = Carbon::parse($request->fecha)->format('y-m-d');
-            $cupo->hora = $request->hora;
-            $cupo->id_doctor = $request->doctor;
-            $cupo->estado = '1';
 
-            $cupo->save();
+
+            $fechaInicio = Carbon::parse($request->fechaInicio)->format('y-m-d');
+            $fechaFin = Carbon::parse($request->fechaFin)->format('y-m-d');
+
+            $periodo = CarbonPeriod::create($fechaInicio, $fechaFin);
+
+            for ($f=0; $f <$periodo->count() ; $f++) {
+
+               if ($periodo->toArray()[$f]->format('D') == "Mon" && $request->mon == "on") {
+                    if ($request->horaAM != null) {
+                        $horaAM = Carbon::parse($request->horaAM);
+                        for ($h=0; $h <$request->cuposAM ; $h++) {
+                            $cupo = new Cupo();
+                            $cupo->fecha= $periodo->toArray()[$f]->format('y-m-d');
+                            $cupo->hora= $horaAM->isoFormat('H:m');
+                            $cupo->id_doctor=$request->doctor;
+                            $cupo->estado = '1';
+                            $cupo->save();
+                            $horaPM = $horaAM->addMinutes($request->step);
+                        }
+                    }
+
+                    if ($request->horaPM != null) {
+                        $horaPM = Carbon::parse($request->horaPM);
+                        for ($h=0; $h <$request->cuposPM ; $h++) {
+                            $cupo = new Cupo();
+                            $cupo->fecha= $periodo->toArray()[$f]->format('y-m-d');
+                            $cupo->hora= $horaPM->isoFormat('H:m');
+                            $cupo->id_doctor=$request->doctor;
+                            $cupo->estado = '1';
+                            $cupo->save();
+                            $horaPM = $horaPM->addMinutes($request->step);
+                        }
+                    }
+               }
+
+               if ($periodo->toArray()[$f]->format('D') == "Tue" && $request->tue == "on") {
+                if ($request->horaAM != null) {
+                    $horaAM = Carbon::parse($request->horaAM);
+                    for ($h=0; $h <$request->cuposAM ; $h++) {
+                        $cupo = new Cupo();
+                        $cupo->fecha= $periodo->toArray()[$f]->format('y-m-d');
+                        $cupo->hora= $horaAM->isoFormat('H:m');
+                        $cupo->id_doctor=$request->doctor;
+                        $cupo->estado = '1';
+                        $cupo->save();
+                        $horaPM = $horaAM->addMinutes($request->step);
+                    }
+                }
+
+                if ($request->horaPM != null) {
+                    $horaPM = Carbon::parse($request->horaPM);
+                    for ($h=0; $h <$request->cuposPM ; $h++) {
+                        $cupo = new Cupo();
+                        $cupo->fecha= $periodo->toArray()[$f]->format('y-m-d');
+                        $cupo->hora= $horaPM->isoFormat('H:m');
+                        $cupo->id_doctor=$request->doctor;
+                        $cupo->estado = '1';
+                        $cupo->save();
+                        $horaPM = $horaPM->addMinutes($request->step);
+                    }
+                }
+               }
+
+               if ($periodo->toArray()[$f]->format('D') == "Wed" && $request->wed == "on") {
+               if ($request->horaAM != null) {
+                        $horaAM = Carbon::parse($request->horaAM);
+                        for ($h=0; $h <$request->cuposAM ; $h++) {
+                            $cupo = new Cupo();
+                            $cupo->fecha= $periodo->toArray()[$f]->format('y-m-d');
+                            $cupo->hora= $horaAM->isoFormat('H:m');
+                            $cupo->id_doctor=$request->doctor;
+                            $cupo->estado = '1';
+                            $cupo->save();
+                            $horaPM = $horaAM->addMinutes($request->step);
+                        }
+                    }
+
+                    if ($request->horaPM != null) {
+                        $horaPM = Carbon::parse($request->horaPM);
+                        for ($h=0; $h <$request->cuposPM ; $h++) {
+                            $cupo = new Cupo();
+                            $cupo->fecha= $periodo->toArray()[$f]->format('y-m-d');
+                            $cupo->hora= $horaPM->isoFormat('H:m');
+                            $cupo->id_doctor=$request->doctor;
+                            $cupo->estado = '1';
+                            $cupo->save();
+                            $horaPM = $horaPM->addMinutes($request->step);
+                        }
+                    }
+               }
+
+               if ($periodo->toArray()[$f]->format('D') == "Thu" && $request->thu == "on") {
+            if ($request->horaAM != null) {
+                        $horaAM = Carbon::parse($request->horaAM);
+                        for ($h=0; $h <$request->cuposAM ; $h++) {
+                            $cupo = new Cupo();
+                            $cupo->fecha= $periodo->toArray()[$f]->format('y-m-d');
+                            $cupo->hora= $horaAM->isoFormat('H:m');
+                            $cupo->id_doctor=$request->doctor;
+                            $cupo->estado = '1';
+                            $cupo->save();
+                            $horaPM = $horaAM->addMinutes($request->step);
+                        }
+                    }
+
+                    if ($request->horaPM != null) {
+                        $horaPM = Carbon::parse($request->horaPM);
+                        for ($h=0; $h <$request->cuposPM ; $h++) {
+                            $cupo = new Cupo();
+                            $cupo->fecha= $periodo->toArray()[$f]->format('y-m-d');
+                            $cupo->hora= $horaPM->isoFormat('H:m');
+                            $cupo->id_doctor=$request->doctor;
+                            $cupo->estado = '1';
+                            $cupo->save();
+                            $horaPM = $horaPM->addMinutes($request->step);
+                        }
+                    }
+               }
+
+               if ($periodo->toArray()[$f]->format('D') == "Fri" && $request->fri == "on") {
+              if ($request->horaAM != null) {
+                        $horaAM = Carbon::parse($request->horaAM);
+                        for ($h=0; $h <$request->cuposAM ; $h++) {
+                            $cupo = new Cupo();
+                            $cupo->fecha= $periodo->toArray()[$f]->format('y-m-d');
+                            $cupo->hora= $horaAM->isoFormat('H:m');
+                            $cupo->id_doctor=$request->doctor;
+                            $cupo->estado = '1';
+                            $cupo->save();
+                            $horaPM = $horaAM->addMinutes($request->step);
+                        }
+                    }
+
+                    if ($request->horaPM != null) {
+                        $horaPM = Carbon::parse($request->horaPM);
+                        for ($h=0; $h <$request->cuposPM ; $h++) {
+                            $cupo = new Cupo();
+                            $cupo->fecha= $periodo->toArray()[$f]->format('y-m-d');
+                            $cupo->hora= $horaPM->isoFormat('H:m');
+                            $cupo->id_doctor=$request->doctor;
+                            $cupo->estado = '1';
+                            $cupo->save();
+                            $horaPM = $horaPM->addMinutes($request->step);
+                        }
+                    }
+               }
+
+               if ($periodo->toArray()[$f]->format('D') == "Sat" && $request->sat == "on") {
+               if ($request->horaAM != null) {
+                        $horaAM = Carbon::parse($request->horaAM);
+                        for ($h=0; $h <$request->cuposAM ; $h++) {
+                            $cupo = new Cupo();
+                            $cupo->fecha= $periodo->toArray()[$f]->format('y-m-d');
+                            $cupo->hora= $horaAM->isoFormat('H:m');
+                            $cupo->id_doctor=$request->doctor;
+                            $cupo->estado = '1';
+                            $cupo->save();
+                            $horaPM = $horaAM->addMinutes($request->step);
+                        }
+                    }
+
+                    if ($request->horaPM != null) {
+                        $horaPM = Carbon::parse($request->horaPM);
+                        for ($h=0; $h <$request->cuposPM ; $h++) {
+                            $cupo = new Cupo();
+                            $cupo->fecha= $periodo->toArray()[$f]->format('y-m-d');
+                            $cupo->hora= $horaPM->isoFormat('H:m');
+                            $cupo->id_doctor=$request->doctor;
+                            $cupo->estado = '1';
+                            $cupo->save();
+                            $horaPM = $horaPM->addMinutes($request->step);
+                        }
+                    }
+               }
+
+               if ($periodo->toArray()[$f]->format('D') == "Sun" && $request->sun == "on") {
+             if ($request->horaAM != null) {
+                        $horaAM = Carbon::parse($request->horaAM);
+                        for ($h=0; $h <$request->cuposAM ; $h++) {
+                            $cupo = new Cupo();
+                            $cupo->fecha= $periodo->toArray()[$f]->format('y-m-d');
+                            $cupo->hora= $horaAM->isoFormat('H:m');
+                            $cupo->id_doctor=$request->doctor;
+                            $cupo->estado = '1';
+                            $cupo->save();
+                            $horaPM = $horaAM->addMinutes($request->step);
+                        }
+                    }
+
+                    if ($request->horaPM != null) {
+                        $horaPM = Carbon::parse($request->horaPM);
+                        for ($h=0; $h <$request->cuposPM ; $h++) {
+                            $cupo = new Cupo();
+                            $cupo->fecha= $periodo->toArray()[$f]->format('y-m-d');
+                            $cupo->hora= $horaPM->isoFormat('H:m');
+                            $cupo->id_doctor=$request->doctor;
+                            $cupo->estado = '1';
+                            $cupo->save();
+                            $horaPM = $horaPM->addMinutes($request->step);
+                        }
+                    }
+               }
+            }
+
+            return redirect()->route('indexCupos');
 
     }
 

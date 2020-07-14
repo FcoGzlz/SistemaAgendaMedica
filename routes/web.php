@@ -56,7 +56,7 @@ Route::post('/registro', 'PacienteController@register')->name('registro');
 
 Route::get('/buscarCupo', 'PacienteController@buscarCupo')->name('buscarCupo');
 
-Route::post('/agendarCita/{id}', ['uses' => 'PacienteController@agendarCita', 'as' => 'agendarCita']);
+Route::get('/agendarCita/{id}', ['uses' => 'PacienteController@agendarCita', 'as' => 'agendarCita']);
 
 Route::get('/citasPendientes', 'PacienteController@citasPendientes')->name('citasPendientes');
 //FIN RUTAS DE PACIENTE

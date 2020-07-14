@@ -9,7 +9,8 @@ class Especialidad extends Model
     protected $table = 'especialidad';
     protected $primaryKey = 'id';
 
-    public function doctor(){
-        return $this->hasManyThrough('App\User', 'App\DoctorEspecialidad', 'id_especialidad' , 'id', 'id_doctor', 'id');
+    public function doctores(){
+        return $this->hasManyThrough('App\User', 'App\DoctorEspecialidad', 'id_especialidad' , 'id', 'id', 'id_doctor');
     }
+
 }
