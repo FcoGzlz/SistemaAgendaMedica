@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h4 class="card-title"><a class="stretched-link" href="buscarCita.html"></a>Exámenes</h4>
+                        <h4 class="card-title"><a class="stretched-link" href="{{route('buscarCupo')}}"></a>Exámenes</h4>
                         <p class="card-text">Agenda aqui tus examenes medicos</p>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h4 class="card-title"><a class="stretched-link" href="buscarCita.html"></a>Dental</h4>
+                        <h4 class="card-title"><a class="stretched-link" href="{{route('buscarCupo')}}"></a>Dental</h4>
                         <p class="card-text">Agenda aqui tus horas de evaluacion dental</p>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h4 class="card-title" style="font-size: 14px;"><a class="stretched-link" href="citasPendientes.html"></a>Consultar Hora</h4>
+                    <h4 class="card-title" style="font-size: 14px;"><a class="stretched-link" href="{{route('citasPendientes')}}"></a>Consultar Hora</h4>
                     </div>
                 </div>
                 <div class="card btnhoras d-inline-flex">
@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h4 class="card-title" style="font-size: 14px;"><a class="stretched-link" href="citasPendientes.html"></a>Anular Hora</h4>
+                        <h4 class="card-title" style="font-size: 14px;"><a class="stretched-link" href="{{route('citasPendientes')}}></a>Anular Hora</h4>
                     </div>
                 </div>
                 <div class="card btnhoras d-inline-flex">
@@ -116,7 +116,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h4 class="card-title" style="font-size: 14px;"><a class="stretched-link" href="citasPendientes.html"></a>Posponer Hora</h4>
+                        <h4 class="card-title" style="font-size: 14px;"><a class="stretched-link" href="{{route('citasPendientes')}}></a>Posponer Hora</h4>
                     </div>
                 </div>
             </div>

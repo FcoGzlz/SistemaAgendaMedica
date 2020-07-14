@@ -59,6 +59,8 @@ Route::get('/buscarCupo', 'PacienteController@buscarCupo')->name('buscarCupo');
 Route::get('/agendarCita/{id}', ['uses' => 'PacienteController@agendarCita', 'as' => 'agendarCita']);
 
 Route::get('/citasPendientes', 'PacienteController@citasPendientes')->name('citasPendientes');
+
+Route::get('/cancelarCita/{id}', ['uses' => 'PacienteController@cancelarCita', 'as' => 'cancelarCita']);
 //FIN RUTAS DE PACIENTE
 
 //INICIO RUTAS ADMINISTRADOR DE CUPOS Y CITAS

@@ -38,14 +38,14 @@ class PacienteController extends Controller
     public function index(){
            $paciente = Auth::user();//Se recupera el usuario que ha iniciado sesión, de esta manera se puede acceder a los atributos del mismo.
 
-        $citas = User::findOrFail($paciente->id)->citas;
+        $citas = User::findOrFail($paciente->id)->citas->where('id_estado', 1);
            return view('paciente.index2Paciente', compact("citas"));//Se devuelve la vista junto con la variable 'citas' la cual contiene las citas que han sido agendadas por el paciente.
 
     }
 
     public function citasPendientes(){
         $paciente = Auth::user();
-        $citas = Cita::where('id_paciente', "$paciente->id")
+        $citas = Cita::where('id_paciente', "$paciente->id")->where('id_estado', 1)
         ->get();
         return view('paciente.citasPendientes', compact('citas'));
     }
@@ -79,5 +79,16 @@ class PacienteController extends Controller
         }
 
 
+    }
+
+    public function cancelarCita($id){
+        $cita = Cita::find($id);
+        $cupo = Cupo::find($cita->cupo->id);
+        $cupo->estado = 1;
+        $cita->id_estado = 3;
+        $cita->save();
+        $cupo->save();
+
+        return redirect()->route('citasPendientes');
     }
 }

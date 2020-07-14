@@ -36,6 +36,8 @@
                                             <td>{{Carbon\Carbon::parse($cita->cupo->hora)->isoFormat('hh:mm')}}</td>
                                         <td>{{$cita->cupo->doctor->nombres}}<br></td>
                                         <td>{{$cita->cupo->doctor->especialidad->nombre}}</td>
+                                        <td>
+                                            <a class="btn btn-admin-user" type="submit" role="button" href="{{url('cancelarCita', $cita->id)}}">Cancelar</a></td>
                                         </tr>
                                         @endforeach
 
